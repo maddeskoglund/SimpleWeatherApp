@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Today from './components/Today'
+import Day1 from './components/Today'
 
 import './App.css';
 
@@ -153,7 +153,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Today
+        <Day1
           tempNow={this.state.tempNow}
         />
 
