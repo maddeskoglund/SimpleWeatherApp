@@ -1,4 +1,31 @@
+
+.place {
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+} 
+
+.date {
+  text-align: center;
+  margin-top: 10px;
+}
+
+
 .tempnow {
-  color: blue;
-  font-size: 50px;
+  font-size: 100px;
+}
+
+.deg {
+  font-size: 30px;
+  
+}
+
+
+.weatherinfo {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  
+  
+  
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Day1 from './components/Today'
+import Day from './components/Today'
+import Today from './components/Date'
+// import Background from './components/Background'
 
 import './App.css';
 
@@ -36,7 +38,6 @@ class App extends Component {
 
 
   componentDidMount() {
-    // const API_KEY = 'd793be0d81fa72f049f684c0ba7ad86c';
     const long = '16.90267';
     const lat = '59.65584';
     let tempNow = -Infinity;
@@ -52,17 +53,13 @@ class App extends Component {
     const tomorrowPlus1Wind = [];
 
 
-
-
-
-    // const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${API_KEY}`
     const url = `https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/${long}/lat/${lat}/data.json`
     fetch(url)
       .then((response) => {
         return response.json()
       })
       .then((data) => {
-        // console.log(data);
+        console.log(data);
 
         const today = new Date();
         const todayStr = today.toLocaleString().slice(0, 10);
@@ -83,7 +80,7 @@ class App extends Component {
           })[0].values[0];
 
           let rainfall = parameters.filter(element => {
-            return element.name === "pmin";
+            return element.name === "pmean";
           })[0].values[0];
 
           // Wind
@@ -114,15 +111,12 @@ class App extends Component {
         const tomorrowTempMin = Math.min(...tomorrowTemp)
         const tomorrowPlus1TempMax = Math.max(...tomorrowPlus1Temp)
         const tomorrowPlus1TempMin = Math.min(...tomorrowPlus1Temp)
-
-
-
-        // console.log(Math.add(todayRain))
-
-        // const todayRainStr = todayRain.toString()
-        // const todayRainStr1 = Math.subtract(todayRainStr)
-        // console.log(todayRainStr)
-
+        const sumTodayRain = Math.round(todayRain.reduce((total, amount) => total + amount));
+        const sumTomorrowRain = Math.round(tomorrowRain.reduce((total, amount) => total + amount));
+        const sumTomorrowPlus1Rain = Math.round(tomorrowPlus1Rain.reduce((total, amount) => total + amount));
+        const avTodayWind = Math.round(todayWind.reduce((total, amount) => total + amount) / (todayWind.length));
+        const avTomorrowWind = Math.round(tomorrowWind.reduce((total, amount) => total + amount) / (tomorrowWind.length));
+        const avTomorrowPlus1Wind = Math.round(tomorrowPlus1Wind.reduce((total, amount) => total + amount) / (tomorrowPlus1Wind.length));
 
 
         this.setState((prevState) => {
@@ -133,12 +127,20 @@ class App extends Component {
           prevState.tomorrow.tempMin = tomorrowTempMin;
           prevState.tomorrowPlus1.tempMax = tomorrowPlus1TempMax;
           prevState.tomorrowPlus1.tempMin = tomorrowPlus1TempMin;
+          prevState.today.rain = sumTodayRain;
+          prevState.tomorrow.rain = sumTomorrowRain;
+          prevState.tomorrowPlus1.rain = sumTomorrowPlus1Rain;
+          prevState.today.wind = avTodayWind;
+          prevState.tomorrow.wind = avTomorrowWind;
+          prevState.tomorrowPlus1.wind = avTomorrowPlus1Wind;
 
-          // city
-          // rain
-          // wind
+
+
+          //   // city
+
+          return prevState;
         })
-        console.log(tempNow)
+
         // .catch((error) => console.log(error));
       });
 
@@ -153,9 +155,19 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Day1
-          tempNow={this.state.tempNow}
+
+        <Day
+          //today
+          TempNow={this.state.today.tempNow}
+          TodayTempMax={this.state.today.tempMax}
+          TodayTempMin={this.state.today.tempMin}
+          TodayRain={this.state.today.rain}
+          TodayWind={this.state.today.wind}
+
+
         />
+
+
 
       </div >
     );
