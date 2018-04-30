@@ -1,9 +1,9 @@
 import React from "react";
 import { Component } from "react";
-import Day from './Today'
+import Day from './Day'
 import Springimg from './images/springimg.jpg'
 
-class Today extends Component {
+class Datum extends Component {
     render() {
         const monthNames = [
             "Januari",
@@ -39,11 +39,11 @@ class Today extends Component {
 
 
         //this below is new
-        // const imageSpring = monthNames['Mars', 'April', 'Maj']
+        // const Spring = monthNames['Mars', 'April', 'Maj']
 
         // chooseBackgroundImage() {
 
-        //     if { imageSpring } ? <Springimg /> : null;
+        //     { Spring } ? <Springimg /> : null;
         // }
 
 
@@ -61,4 +61,4 @@ class Today extends Component {
     }
 }
 
-export default Today;
+export default Datum;

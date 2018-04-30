@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Day from './components/Today'
-import Today from './components/Date'
+import Day from './components/Day'
+import Datum from './components/Date'
+
+
 // import Background from './components/Background'
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
