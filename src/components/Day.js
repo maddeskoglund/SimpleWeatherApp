@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import Datum from './Date'
-import ArrowUp from 'react-icons/lib/fa/long-arrow-up';
-import ArrowDown from 'react-icons/lib/fa/long-arrow-down';
-import Moon from 'react-icons/lib/fa/moon-o';
+import React, { Component } from "react";
+import Datum from "./Datum";
+import ArrowUp from "react-icons/lib/fa/long-arrow-up";
+import ArrowDown from "react-icons/lib/fa/long-arrow-down";
+import Moon from "react-icons/lib/fa/moon-o";
 // import Arrow from "react-icons/lib/ti/arrow-forward";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Sidebar from './Menu'
-
-
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Sidebar from "./Menu";
 
 class Day extends Component {
 
@@ -48,6 +46,3 @@ class Day extends Component {
 }
 
 export default Day;
-
-
-
