@@ -3,8 +3,8 @@ import { Component } from "react";
 import Day from './Today'
 import Springimg from './images/springimg.jpg'
 
-export class Today extends Component {
-    render(props) {
+class Today extends Component {
+    render() {
         const monthNames = [
             "Januari",
             "Februari",
@@ -53,7 +53,7 @@ export class Today extends Component {
         return (
             <div>
                 <Day
-                    datum="hej"
+                    datum={datum}
                 />
 
             </div>
