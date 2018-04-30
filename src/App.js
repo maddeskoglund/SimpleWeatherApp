@@ -130,11 +130,11 @@ class App extends Component {
         );
         const avTomorrowWind = Math.round(
           tomorrowWind.reduce((total, amount) => total + amount) /
-            tomorrowWind.length
+          tomorrowWind.length
         );
         const avTomorrowPlus1Wind = Math.round(
           tomorrowPlus1Wind.reduce((total, amount) => total + amount) /
-            tomorrowPlus1Wind.length
+          tomorrowPlus1Wind.length
         );
 
         this.setState(prevState => {
