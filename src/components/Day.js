@@ -25,7 +25,7 @@ class Day extends Component {
 
 
             <div>
-                {/* <Today {this.props.datum} /> */}
+                <Datum {this.props.datum} />
                 <div className='place'>Enköping</div>
                 <div className='date'>Torsdag, 26 april</div>
                 <div className='weatherinfo'>
