@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import Day from './Day'
+// import Day from './Day'
 import Springimg from './images/springimg.jpg'
 
 class Datum extends Component {
@@ -52,9 +52,9 @@ class Datum extends Component {
 
         return (
             <div>
-                <Day
+                {/* <Day
                     datum={datum}
-                />
+                /> */}
 
             </div>
         );

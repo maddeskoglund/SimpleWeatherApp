@@ -13,14 +13,7 @@
 
 .tempnow {
   font-size: 150px;
-  vertical-align: text-top;
 }
-
-.deg {
-  font-size: 80px;
-  vertical-align: inherit;
-}
-
 
 .weatherinfo {
   position: absolute;

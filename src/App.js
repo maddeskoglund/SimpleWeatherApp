@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Day from "./components/Day";
-import Datum from "./components/Datum";
+import Sidebar from './components/Menu'
 
 // import Background from './components/Background'
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+
 import "./App.css";
 
 class App extends Component {
@@ -58,7 +59,7 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        console.log(data);
+        // console.log(data);
 
         const today = new Date();
         var options = {
@@ -69,11 +70,14 @@ class App extends Component {
         const todayStr = today.toLocaleString().slice(0, 10);
         const todayDatumStr = today.toLocaleString("sv-SE", options);
         const tomorrow = new Date(today.setDate(today.getDate() + 1));
+        const tomorrowDatumStr = tomorrow.toLocaleString("sv-SE", options)
         const tomorrowStr = tomorrow.toLocaleString().slice(0, 10);
         const tomorrowPlus1 = new Date(
           tomorrow.setDate(tomorrow.getDate() + 1)
         );
+        const tomorrowPlus1DatumStr = tomorrowPlus1.toLocaleString("sv-SE", options)
         const tomorrowPlus1Str = tomorrowPlus1.toLocaleString().slice(0, 10);
+
 
         tempNow = data.timeSeries[0].parameters.filter(
           element => element.name === "t"
@@ -138,7 +142,9 @@ class App extends Component {
         );
 
         this.setState(prevState => {
-          prevState.datum = todayDatumStr;
+          prevState.todayDate = todayDatumStr;
+          prevState.tomorrowDate = tomorrowDatumStr;
+          prevState.tomorrowPlus1Date = tomorrowPlus1DatumStr;
           prevState.today.tempNow = tempNow;
           prevState.today.tempMax = todayTempMax;
           prevState.today.tempMin = todayTempMin;
@@ -164,16 +170,53 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Day
-          datum={this.state.datum}
-          TempNow={this.state.today.tempNow}
-          TodayTempMax={this.state.today.tempMax}
-          TodayTempMin={this.state.today.tempMin}
-          TodayRain={this.state.today.rain}
-          TodayWind={this.state.today.wind}
-        />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Sidebar />
+
+          <Route path='/' exact
+            render={props => (
+              <Day
+                //Idag
+                datum={this.state.todayDate}
+                TempNow={this.state.today.tempNow}
+                TempMax={this.state.today.tempMax}
+                TempMin={this.state.today.tempMin}
+                Rain={this.state.today.rain}
+                Wind={this.state.today.wind}
+              />
+            )}
+          />
+          <Route path='/tomorrow' exact
+            render={props => (
+              <Day
+                //Imorgon
+                datum={this.state.tomorrowDate}
+                TempMax={this.state.tomorrow.tempMax}
+                TempMin={this.state.tomorrow.tempMin}
+                Rain={this.state.tomorrow.rain}
+                Wind={this.state.tomorrow.wind}
+              />
+            )}
+          />
+          <Route path='/tomorrowPlus1' exact
+            render={props => (
+              <Day
+                //Imorgon
+                datum={this.state.tomorrowPlus1Date}
+                TempMax={this.state.tomorrowPlus1.tempMax}
+                TempMin={this.state.tomorrowPlus1.tempMin}
+                Rain={this.state.tomorrowPlus1.rain}
+                Wind={this.state.tomorrowPlus1.wind}
+              />
+            )}
+          />
+
+
+        </div>
+
+      </BrowserRouter>
+
     );
   }
 }

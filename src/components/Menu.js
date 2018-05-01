@@ -16,6 +16,9 @@ class Sidebar extends Component {
 
             <Menu right={true} className='menu' customBurgerIcon={<Arrow />}>
                 <Link to='/'>Idag</Link>
+                <Link to='/tomorrow'>Imorgon</Link>
+                <Link to='/tomorrowPlus1'>Övermorgon</Link>
+
 
                 {/* <a id="today" className="menu-item" href="/">Idag</a>
                 <a id="tomorrow" className="menu-item" href="/about">Imorgon</a>
