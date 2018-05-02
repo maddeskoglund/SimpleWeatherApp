@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import Day from "./components/Day";
 import FutureDay from "./components/FutureDay";
 import Sidebar from './components/Menu'
-// import Icon from './components/Icon'
 
-// import Background from './components/Background'
 import { BrowserRouter, Route } from "react-router-dom";
 
 import "./App.css";
@@ -255,12 +253,8 @@ class App extends Component {
             TomorrowPlus1TempMax={this.state.tomorrowPlus1.tempMax}
             TomorrowPlus1TempMin={this.state.tomorrowPlus1.tempMin}
             TomorrowPlus1Icon={this.state.tomorrowPlus1.icon}
-
           />
 
-          {/* <Icon
-            IconNow={this.state.today.iconNow}
-          /> */}
 
           <Route path='/' exact
             render={props => (

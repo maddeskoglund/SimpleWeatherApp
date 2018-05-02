@@ -10,17 +10,17 @@ import Sun from "react-icons/lib/ti/weather-sunny";
 
 class Icon extends Component {
 
-    const IconNow = { this.props.IconNow };
+    // const IconNow = { this.props.IconNow };
 
-    const sun = [1, 2]
-    const sunCloud = [3, 4]
-    const cloud = [5, 6, 7]
-    const rain = [8, 9, 10, 12, 13, 14, 18, 19, 22, 23, 24]
-    const thunder = [11, 21]
-    const snow = [15, 16, 17, 25, 26, 27]
+    // const sun = [1, 2]
+    // const sunCloud = [3, 4]
+    // const cloud = [5, 6, 7]
+    // const rain = [8, 9, 10, 12, 13, 14, 18, 19, 22, 23, 24]
+    // const thunder = [11, 21]
+    // const snow = [15, 16, 17, 25, 26, 27]
 
 
-    om IconNow === sunobjeketen {
+    // om IconNow === sunobjeketen {
 
 }
 

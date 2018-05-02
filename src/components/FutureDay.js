@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import ArrowUp from "react-icons/lib/fa/long-arrow-up";
-import ArrowDown from "react-icons/lib/fa/long-arrow-down";
 import Moon from "react-icons/lib/fa/moon-o";
 
 
@@ -14,9 +12,8 @@ class FutureDay extends Component {
                 <div className="weatherinfo">
                     <Moon />
 
-                    <div className="temphighlow">
-                        <ArrowUp /> {this.props.TempMax}° <ArrowDown />{" "}
-                        {this.props.TempMin}°
+                    <div className="temphighlow-futureday">
+                        {this.props.TempMax}° / {this.props.TempMin}°
           </div>
                     <div className="wind">Vindstyrka: {this.props.Wind} m/s</div>
                     <div className="rain">Nederbörd: {this.props.Rain} mm</div>

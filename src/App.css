@@ -21,6 +21,9 @@
   left: 20px;
 }
 
+.temphighlow-futureday {
+  font-size: 50px;
+}
 
 
 /*********************'/
@@ -75,9 +78,19 @@
 .bm-item-list {
   color: #b8b7ad;
   padding: 0.8em;
+  text-align: center;
 }
 
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+a {
+  text-decoration: none;
+  color:white;
+}
+
+.dag {
+  text-transform: uppercase;
 }

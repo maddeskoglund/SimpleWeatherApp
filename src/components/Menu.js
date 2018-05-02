@@ -16,16 +16,16 @@ class Sidebar extends Component {
         return (
 
             <Menu right={true} className='menu' customBurgerIcon={<Arrow />}>
-                <Link to='/'>Idag
-                <p>{this.props.TodayIcon}</p>
+                <Link to='/'><p className='dag'>Idag</p>
+                    <p><img src={"images/" + this.props.TodayIcon + ".png"} /></p>
                     <p> {this.props.TodayTempMax}° /  {this.props.TodayTempMin}°</p>
                 </Link>
-                <Link to='/tomorrow'>Imorgon
-                <p>{this.props.TomorrowIcon}</p>
+                <Link to='/tomorrow'><p className='dag'>Imorgon</p>
+                    <p>{this.props.TomorrowIcon}</p>
                     <p> {this.props.TomorrowTempMax}° /  {this.props.TomorrowTempMin}°</p>
                 </Link>
-                <Link to='/tomorrowPlus1'>Övermorgon
-                <p>{this.props.TomorrowPlus1Icon}</p>
+                <Link to='/tomorrowPlus1'><p className='dag'>Övermorgon</p>
+                    <p>{this.props.TomorrowPlus1Icon}</p>
                     <p> {this.props.TomorrowPlus1TempMax}° /  {this.props.TomorrowPlus1TempMin}°</p>
                 </Link>
 
