@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Day from "./components/Day";
 import FutureDay from "./components/FutureDay";
 import Sidebar from './components/Menu'
+// import Icon from './components/Icon'
 
 // import Background from './components/Background'
 import { BrowserRouter, Route } from "react-router-dom";
@@ -206,14 +207,6 @@ class App extends Component {
           h = 0;
         }
 
-        console.log(tomorrowPlus1Icon)
-        console.log(mostCommonIconTomorrowPlus1)
-
-
-
-
-
-
 
 
 
@@ -264,6 +257,10 @@ class App extends Component {
             TomorrowPlus1Icon={this.state.tomorrowPlus1.icon}
 
           />
+
+          {/* <Icon
+            IconNow={this.state.today.iconNow}
+          /> */}
 
           <Route path='/' exact
             render={props => (
