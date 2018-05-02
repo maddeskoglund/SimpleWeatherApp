@@ -4,7 +4,7 @@ import ArrowDown from "react-icons/lib/fa/long-arrow-down";
 import Moon from "react-icons/lib/fa/moon-o";
 
 
-class Day extends Component {
+class FutureDay extends Component {
     render() {
         return (
             <div>
@@ -13,7 +13,6 @@ class Day extends Component {
                 <div className="date">{this.props.datum}</div>
                 <div className="weatherinfo">
                     <Moon />
-                    <div>{this.props.IconNow}</div>
                     <div className="tempnow">{this.props.TempNow}°</div>
                     <div className="temphighlow">
                         <ArrowUp /> {this.props.TempMax}° <ArrowDown />{" "}
@@ -28,4 +27,4 @@ class Day extends Component {
     }
 }
 
-export default Day;
+export default FutureDay;

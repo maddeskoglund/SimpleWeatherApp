@@ -3,6 +3,7 @@ import { slide as Menu } from 'react-burger-menu';
 import Arrow from "react-icons/lib/ti/arrow-forward";
 import { Link } from 'react-router-dom'
 
+
 class Sidebar extends Component {
     showSettings(event) {
         event.preventDefault();
@@ -15,9 +16,18 @@ class Sidebar extends Component {
         return (
 
             <Menu right={true} className='menu' customBurgerIcon={<Arrow />}>
-                <Link to='/'>Idag</Link>
-                <Link to='/tomorrow'>Imorgon</Link>
-                <Link to='/tomorrowPlus1'>Övermorgon</Link>
+                <Link to='/'>Idag
+                <p>{this.props.TodayIcon}</p>
+                    <p> {this.props.TodayTempMax}° /  {this.props.TodayTempMin}°</p>
+                </Link>
+                <Link to='/tomorrow'>Imorgon
+                <p>{this.props.TomorrowIcon}</p>
+                    <p> {this.props.TomorrowTempMax}° /  {this.props.TomorrowTempMin}°</p>
+                </Link>
+                <Link to='/tomorrowPlus1'>Övermorgon
+                <p>{this.props.TomorrowPlus1Icon}</p>
+                    <p> {this.props.TomorrowPlus1TempMax}° /  {this.props.TomorrowPlus1TempMin}°</p>
+                </Link>
 
 
                 {/* <a id="today" className="menu-item" href="/">Idag</a>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Day from "./components/Day";
+import FutureDay from "./components/FutureDay";
 import Sidebar from './components/Menu'
 
 // import Background from './components/Background'
@@ -13,6 +14,7 @@ class App extends Component {
     this.state = {
       today: {
         city: [],
+        icon: [],
         tempNow: [],
         tempMax: [],
         tempMin: [],
@@ -21,6 +23,7 @@ class App extends Component {
       },
       tomorrow: {
         city: [],
+        icon: [],
         tempMax: [],
         tempMin: [],
         rain: [],
@@ -28,6 +31,7 @@ class App extends Component {
       },
       tomorrowPlus1: {
         city: [],
+        icon: [],
         tempMax: [],
         tempMin: [],
         rain: [],
@@ -42,13 +46,17 @@ class App extends Component {
     const long = "16.90267";
     const lat = "59.65584";
     let tempNow = -Infinity;
+    let iconNow = -Infinity;
 
+    const todayIcon = [];
     const todayTemp = [];
     const todayRain = [];
     const todayWind = [];
+    const tomorrowIcon = [];
     const tomorrowTemp = [];
     const tomorrowRain = [];
     const tomorrowWind = [];
+    const tomorrowPlus1Icon = [];
     const tomorrowPlus1Temp = [];
     const tomorrowPlus1Rain = [];
     const tomorrowPlus1Wind = [];
@@ -83,6 +91,10 @@ class App extends Component {
           element => element.name === "t"
         )[0].values[0];
 
+        iconNow = data.timeSeries[0].parameters.filter(
+          element => element.name === "Wsymb2"
+        )[0].values[0];
+
         data.timeSeries.map(listItem => {
           const { validTime, parameters } = listItem;
           // Temp
@@ -99,20 +111,28 @@ class App extends Component {
             return element.name === "ws";
           })[0].values[0];
 
+          let icon = parameters.filter(element => {
+            return element.name === "Wsymb2";
+          })[0].values[0];
+
           if (validTime.startsWith(todayStr)) {
             todayTemp.push(temperature);
             todayRain.push(rainfall);
             todayWind.push(windspeed);
+            todayIcon.push(icon);
           } else if (validTime.startsWith(tomorrowStr)) {
             tomorrowTemp.push(temperature);
             tomorrowRain.push(rainfall);
             tomorrowWind.push(windspeed);
+            tomorrowIcon.push(icon);
           } else if (validTime.startsWith(tomorrowPlus1Str)) {
             tomorrowPlus1Temp.push(temperature);
             tomorrowPlus1Rain.push(rainfall);
             tomorrowPlus1Wind.push(windspeed);
+            tomorrowPlus1Icon.push(icon);
           }
         });
+
 
         const todayTempMax = Math.max(...todayTemp);
         const todayTempMin = Math.min(...todayTemp);
@@ -141,7 +161,67 @@ class App extends Component {
           tomorrowPlus1Wind.length
         );
 
+        let mf = 1;
+        let m = 0;
+        let mostCommonIconToday;
+        for (let i = 0; i < todayIcon.length; i++) {
+          for (let j = i; j < todayIcon.length; j++) {
+            if (todayIcon[i] == todayIcon[j])
+              m++;
+            if (mf < m) {
+              mf = m;
+              mostCommonIconToday = todayIcon[i];
+            }
+          }
+          m = 0;
+        }
+
+        let nf = 1;
+        let n = 0;
+        let mostCommonIconTomorrow;
+        for (let i = 0; i < tomorrowIcon.length; i++) {
+          for (let j = i; j < tomorrowIcon.length; j++) {
+            if (tomorrowIcon[i] == tomorrowIcon[j])
+              n++;
+            if (nf < n) {
+              nf = n;
+              mostCommonIconTomorrow = tomorrowIcon[i];
+            }
+          }
+          n = 0;
+        }
+
+        let hf = 1;
+        let h = 0;
+        let mostCommonIconTomorrowPlus1;
+        for (let i = 0; i < tomorrowPlus1Icon.length; i++) {
+          for (let j = i; j < tomorrowPlus1Icon.length; j++) {
+            if (tomorrowPlus1Icon[i] == tomorrowPlus1Icon[j])
+              h++;
+            if (hf < h) {
+              hf = h;
+              mostCommonIconTomorrowPlus1 = tomorrowPlus1Icon[i];
+            }
+          }
+          h = 0;
+        }
+
+        console.log(tomorrowPlus1Icon)
+        console.log(mostCommonIconTomorrowPlus1)
+
+
+
+
+
+
+
+
+
         this.setState(prevState => {
+          prevState.today.iconNow = iconNow;
+          prevState.today.icon = mostCommonIconToday;
+          prevState.tomorrow.icon = mostCommonIconTomorrow;
+          prevState.tomorrowPlus1.icon = mostCommonIconTomorrowPlus1;
           prevState.todayDate = todayDatumStr;
           prevState.tomorrowDate = tomorrowDatumStr;
           prevState.tomorrowPlus1Date = tomorrowPlus1DatumStr;
@@ -172,12 +252,24 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Sidebar />
+          <Sidebar
+            TodayTempMax={this.state.today.tempMax}
+            TodayTempMin={this.state.today.tempMin}
+            TodayIcon={this.state.today.icon}
+            TomorrowTempMax={this.state.tomorrow.tempMax}
+            TomorrowTempMin={this.state.tomorrow.tempMin}
+            TomorrowIcon={this.state.tomorrow.icon}
+            TomorrowPlus1TempMax={this.state.tomorrowPlus1.tempMax}
+            TomorrowPlus1TempMin={this.state.tomorrowPlus1.tempMin}
+            TomorrowPlus1Icon={this.state.tomorrowPlus1.icon}
+
+          />
 
           <Route path='/' exact
             render={props => (
               <Day
                 //Idag
+                IconNow={this.state.today.iconNow}
                 datum={this.state.todayDate}
                 TempNow={this.state.today.tempNow}
                 TempMax={this.state.today.tempMax}
@@ -185,11 +277,12 @@ class App extends Component {
                 Rain={this.state.today.rain}
                 Wind={this.state.today.wind}
               />
+
             )}
           />
           <Route path='/tomorrow' exact
             render={props => (
-              <Day
+              <FutureDay
                 //Imorgon
                 datum={this.state.tomorrowDate}
                 TempMax={this.state.tomorrow.tempMax}
@@ -201,8 +294,8 @@ class App extends Component {
           />
           <Route path='/tomorrowPlus1' exact
             render={props => (
-              <Day
-                //Imorgon
+              <FutureDay
+                //Övermorgon
                 datum={this.state.tomorrowPlus1Date}
                 TempMax={this.state.tomorrowPlus1.tempMax}
                 TempMin={this.state.tomorrowPlus1.tempMin}
