@@ -206,21 +206,26 @@ class App extends Component {
         }
 
 
-        /***************************************** */
-
-
-
-        // const backgroundImages = {
-        //   spring: "images/springimg.jpg"
-        // }
-
-
-
-        // var background =
-        //   (this.today.tempNow >= 10) ? { spring } : null;
-
 
         /***************************************** */
+
+
+
+        const backgroundImages = {
+          spring: "images/springimg.jpg"
+        }
+
+        // spring: "images/springimg.jpg"
+
+
+
+
+        var background =
+          (tempNow >= 10) ? { spring } : null;
+
+
+        /***************************************** */
+
 
 
         this.setState(prevState => {
