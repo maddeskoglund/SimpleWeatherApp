@@ -13,20 +13,55 @@ class Sidebar extends Component {
     }
 
     render() {
+        const Icons = [
+            "",
+            "sun.png",
+            "sun.png",
+            "suncloud.png",
+            "suncloud.png",
+            "cloud.png",
+            "cloud.png",
+            "cloud.png",
+            "rain.png",
+            "rain.png",
+            "rain.png",
+            "thunder.png",
+            "rain.png",
+            "rain.png",
+            "rain.png",
+            "snow.png",
+            "snow.png",
+            "snow.png",
+            "rain.png",
+            "rain.png",
+            "rain.png",
+            "thunder.png",
+            "rain.png",
+            "rain.png",
+            "rain.png",
+            "snow.png",
+            "snow.png",
+            "snow.png"
+        ];
+        const IconToday = "images/" + Icons[this.props.TodayIcon];
+        const IconTomorrow = "images/" + Icons[this.props.TomorrowIcon];
+        const IconTomorrowPlus1 = "images/" + Icons[this.props.TomorrowPlus1Icon];
+
+
         return (
 
-            <Menu right={true} className='menu' customBurgerIcon={<Arrow />}>
+            <Menu right={true} width={170} className='menu' customBurgerIcon={<Arrow />}>
                 <Link to='/'><p className='dag'>Idag</p>
-                    <p><img src={"images/" + this.props.TodayIcon + ".png"} /></p>
-                    <p> {this.props.TodayTempMax}° /  {this.props.TodayTempMin}°</p>
+                    <div className='icon-menu'><img src={IconToday} /></div>
+                    <p className='temp-menu'> {this.props.TodayTempMax}° /  {this.props.TodayTempMin}°</p>
                 </Link>
                 <Link to='/tomorrow'><p className='dag'>Imorgon</p>
-                    <p>{this.props.TomorrowIcon}</p>
-                    <p> {this.props.TomorrowTempMax}° /  {this.props.TomorrowTempMin}°</p>
+                    <div className='icon-menu'><img src={IconTomorrow} /></div>
+                    <p className='temp-menu'> {this.props.TomorrowTempMax}° /  {this.props.TomorrowTempMin}°</p>
                 </Link>
                 <Link to='/tomorrowPlus1'><p className='dag'>Övermorgon</p>
-                    <p>{this.props.TomorrowPlus1Icon}</p>
-                    <p> {this.props.TomorrowPlus1TempMax}° /  {this.props.TomorrowPlus1TempMin}°</p>
+                    <div className='icon-menu'><img src={IconTomorrowPlus1} /></div>
+                    <p className='temp-menu'> {this.props.TomorrowPlus1TempMax}° /  {this.props.TomorrowPlus1TempMin}°</p>
                 </Link>
 
 

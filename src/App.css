@@ -10,29 +10,31 @@
   margin-top: 10px;
 }
 
-
-.tempnow {
-  font-size: 150px;
-}
-
 .weatherinfo {
   position: absolute;
   bottom: 20px;
   left: 20px;
 }
 
+/****** Day ********/
+.tempnow {
+  font-size: 120px;
+}
+
+.icon-now img {
+width: 100px;
+}
+
+
+/******* FutureDay ***********/
+
 .temphighlow-futureday {
   font-size: 50px;
 }
 
 
-/*********************'/
-/* Position and sizing of burger button */
-.menu-item {
-  text-align: center;
-  color: white;
-  text-transform: uppercase;
-}
+
+/***** MENU *******/
 
 .bm-burger-button {
   position: fixed;
@@ -40,16 +42,8 @@
   margin-right:10px;
   width: 36px;
   height: 30px;
-  /* left: 36px;
-  top: 36px; */
 }
 
-/* Color/shape of burger icon bars */
-/* .bm-burger-bars {
-  background: #373a47;
-} */
-
-/* Position and sizing of clickable cross button */
 .bm-cross-button {
   left:0;
   margin-left:10px;
@@ -57,31 +51,21 @@
   width: 24px;
 }
 
-/* Color/shape of close button cross */
 .bm-cross {
   background: white;
 }
 
-/* General sidebar styles */
 .bm-menu {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 2.5em 1.5em 0;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.5em 0.5em 0;
   font-size: 1.15em;
 }
 
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-  fill: #373a47;
-}
-
-/* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
-  padding: 0.8em;
   text-align: center;
 }
 
-/* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
@@ -93,4 +77,18 @@ a {
 
 .dag {
   text-transform: uppercase;
+  font-size:1em;
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
+
+.icon-menu img {
+  width: 100px;
+}
+
+.temp-menu {
+  font-size: 0.7em;
+  margin-top:10px;
+  margin-bottom: 50px;
+}
+

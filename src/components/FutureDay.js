@@ -4,14 +4,45 @@ import Moon from "react-icons/lib/fa/moon-o";
 
 class FutureDay extends Component {
     render() {
+        const Icons = [
+            "",
+            "sun.png",
+            "sun.png",
+            "suncloud.png",
+            "suncloud.png",
+            "cloud.png",
+            "cloud.png",
+            "cloud.png",
+            "rain.png",
+            "rain.png",
+            "rain.png",
+            "thunder.png",
+            "rain.png",
+            "rain.png",
+            "rain.png",
+            "snow.png",
+            "snow.png",
+            "snow.png",
+            "rain.png",
+            "rain.png",
+            "rain.png",
+            "thunder.png",
+            "rain.png",
+            "rain.png",
+            "rain.png",
+            "snow.png",
+            "snow.png",
+            "snow.png"
+        ];
+        const Icon = "images/" + Icons[this.props.Icon];
+
         return (
             <div>
 
                 <div className="place">Enköping</div>
                 <div className="date">{this.props.datum}</div>
                 <div className="weatherinfo">
-                    <Moon />
-
+                    <div className='icon-now'><img src={Icon} /></div>
                     <div className="temphighlow-futureday">
                         {this.props.TempMax}° / {this.props.TempMin}°
           </div>

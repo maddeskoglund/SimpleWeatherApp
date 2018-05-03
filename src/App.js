@@ -206,6 +206,21 @@ class App extends Component {
         }
 
 
+        /***************************************** */
+
+
+
+        // const backgroundImages = {
+        //   spring: "images/springimg.jpg"
+        // }
+
+
+
+        // var background =
+        //   (this.today.tempNow >= 10) ? { spring } : null;
+
+
+        /***************************************** */
 
 
         this.setState(prevState => {
@@ -239,10 +254,15 @@ class App extends Component {
       });
   }
 
+
+
+
+
   render() {
     return (
       <BrowserRouter>
         <div>
+          {/* <img src={background} /> */}
           <Sidebar
             TodayTempMax={this.state.today.tempMax}
             TodayTempMin={this.state.today.tempMin}
@@ -275,6 +295,7 @@ class App extends Component {
             render={props => (
               <FutureDay
                 //Imorgon
+                Icon={this.state.tomorrow.icon}
                 datum={this.state.tomorrowDate}
                 TempMax={this.state.tomorrow.tempMax}
                 TempMin={this.state.tomorrow.tempMin}
@@ -287,6 +308,7 @@ class App extends Component {
             render={props => (
               <FutureDay
                 //Övermorgon
+                Icon={this.state.tomorrowPlus1.icon}
                 datum={this.state.tomorrowPlus1Date}
                 TempMax={this.state.tomorrowPlus1.tempMax}
                 TempMin={this.state.tomorrowPlus1.tempMin}
