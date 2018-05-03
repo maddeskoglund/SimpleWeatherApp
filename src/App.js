@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Day from "./components/Day";
 import FutureDay from "./components/FutureDay";
-import Sidebar from './components/Menu'
+import Sidebar from "./components/Menu";
 
 import { BrowserRouter, Route } from "react-router-dom";
 
@@ -77,14 +77,16 @@ class App extends Component {
         const todayStr = today.toLocaleString().slice(0, 10);
         const todayDatumStr = today.toLocaleString("sv-SE", options);
         const tomorrow = new Date(today.setDate(today.getDate() + 1));
-        const tomorrowDatumStr = tomorrow.toLocaleString("sv-SE", options)
+        const tomorrowDatumStr = tomorrow.toLocaleString("sv-SE", options);
         const tomorrowStr = tomorrow.toLocaleString().slice(0, 10);
         const tomorrowPlus1 = new Date(
           tomorrow.setDate(tomorrow.getDate() + 1)
         );
-        const tomorrowPlus1DatumStr = tomorrowPlus1.toLocaleString("sv-SE", options)
+        const tomorrowPlus1DatumStr = tomorrowPlus1.toLocaleString(
+          "sv-SE",
+          options
+        );
         const tomorrowPlus1Str = tomorrowPlus1.toLocaleString().slice(0, 10);
-
 
         tempNow = data.timeSeries[0].parameters.filter(
           element => element.name === "t"
@@ -132,7 +134,6 @@ class App extends Component {
           }
         });
 
-
         const todayTempMax = Math.max(...todayTemp);
         const todayTempMin = Math.min(...todayTemp);
         const tomorrowTempMax = Math.max(...tomorrowTemp);
@@ -153,11 +154,11 @@ class App extends Component {
         );
         const avTomorrowWind = Math.round(
           tomorrowWind.reduce((total, amount) => total + amount) /
-          tomorrowWind.length
+            tomorrowWind.length
         );
         const avTomorrowPlus1Wind = Math.round(
           tomorrowPlus1Wind.reduce((total, amount) => total + amount) /
-          tomorrowPlus1Wind.length
+            tomorrowPlus1Wind.length
         );
 
         let mf = 1;
@@ -165,8 +166,7 @@ class App extends Component {
         let mostCommonIconToday;
         for (let i = 0; i < todayIcon.length; i++) {
           for (let j = i; j < todayIcon.length; j++) {
-            if (todayIcon[i] == todayIcon[j])
-              m++;
+            if (todayIcon[i] == todayIcon[j]) m++;
             if (mf < m) {
               mf = m;
               mostCommonIconToday = todayIcon[i];
@@ -180,8 +180,7 @@ class App extends Component {
         let mostCommonIconTomorrow;
         for (let i = 0; i < tomorrowIcon.length; i++) {
           for (let j = i; j < tomorrowIcon.length; j++) {
-            if (tomorrowIcon[i] == tomorrowIcon[j])
-              n++;
+            if (tomorrowIcon[i] == tomorrowIcon[j]) n++;
             if (nf < n) {
               nf = n;
               mostCommonIconTomorrow = tomorrowIcon[i];
@@ -195,8 +194,7 @@ class App extends Component {
         let mostCommonIconTomorrowPlus1;
         for (let i = 0; i < tomorrowPlus1Icon.length; i++) {
           for (let j = i; j < tomorrowPlus1Icon.length; j++) {
-            if (tomorrowPlus1Icon[i] == tomorrowPlus1Icon[j])
-              h++;
+            if (tomorrowPlus1Icon[i] == tomorrowPlus1Icon[j]) h++;
             if (hf < h) {
               hf = h;
               mostCommonIconTomorrowPlus1 = tomorrowPlus1Icon[i];
@@ -205,7 +203,11 @@ class App extends Component {
           h = 0;
         }
 
+        const backgroundImages = {
+          spring: "images/springimg.jpg"
+        };
 
+<<<<<<< HEAD
 
         /***************************************** */
 
@@ -226,9 +228,13 @@ class App extends Component {
 
         /***************************************** */
 
+=======
+        var background = tempNow >= 10 ? backgroundImages.spring : null;
+>>>>>>> b04fe12e36327f1deef8441072771b8eac070ef2
 
 
         this.setState(prevState => {
+          prevState.background = background;
           prevState.today.iconNow = iconNow;
           prevState.today.icon = mostCommonIconToday;
           prevState.tomorrow.icon = mostCommonIconTomorrow;
@@ -259,15 +265,11 @@ class App extends Component {
       });
   }
 
-
-
-
-
   render() {
     return (
       <BrowserRouter>
         <div>
-          {/* <img src={background} /> */}
+          <img src={this.background} />
           <Sidebar
             TodayTempMax={this.state.today.tempMax}
             TodayTempMin={this.state.today.tempMin}
@@ -280,8 +282,9 @@ class App extends Component {
             TomorrowPlus1Icon={this.state.tomorrowPlus1.icon}
           />
 
-
-          <Route path='/' exact
+          <Route
+            path="/"
+            exact
             render={props => (
               <Day
                 //Idag
@@ -293,10 +296,11 @@ class App extends Component {
                 Rain={this.state.today.rain}
                 Wind={this.state.today.wind}
               />
-
             )}
           />
-          <Route path='/tomorrow' exact
+          <Route
+            path="/tomorrow"
+            exact
             render={props => (
               <FutureDay
                 //Imorgon
@@ -309,7 +313,9 @@ class App extends Component {
               />
             )}
           />
-          <Route path='/tomorrowPlus1' exact
+          <Route
+            path="/tomorrowPlus1"
+            exact
             render={props => (
               <FutureDay
                 //Övermorgon
@@ -322,12 +328,8 @@ class App extends Component {
               />
             )}
           />
-
-
         </div>
-
       </BrowserRouter>
-
     );
   }
 }
