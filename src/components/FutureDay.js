@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Moon from "react-icons/lib/fa/moon-o";
 
 
 class FutureDay extends Component {
@@ -42,7 +41,7 @@ class FutureDay extends Component {
                 <div className="place">Enköping</div>
                 <div className="date">{this.props.datum}</div>
                 <div className="weatherinfo">
-                    <div className='icon-now'><img src={Icon} /></div>
+                    <div className='icon-now'><img src={Icon} alt="" /></div>
                     <div className="temphighlow-futureday">
                         {this.props.TempMax}° / {this.props.TempMin}°
           </div>

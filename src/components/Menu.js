@@ -52,15 +52,15 @@ class Sidebar extends Component {
 
             <Menu right={true} width={170} className='menu' customBurgerIcon={<Arrow />}>
                 <Link to='/'><p className='dag'>Idag</p>
-                    <div className='icon-menu'><img src={IconToday} /></div>
+                    <div className='icon-menu'><img src={IconToday} alt="" /></div>
                     <p className='temp-menu'> {this.props.TodayTempMax}° /  {this.props.TodayTempMin}°</p>
                 </Link>
                 <Link to='/tomorrow'><p className='dag'>Imorgon</p>
-                    <div className='icon-menu'><img src={IconTomorrow} /></div>
+                    <div className='icon-menu'><img src={IconTomorrow} alt="" /></div>
                     <p className='temp-menu'> {this.props.TomorrowTempMax}° /  {this.props.TomorrowTempMin}°</p>
                 </Link>
                 <Link to='/tomorrowPlus1'><p className='dag'>Övermorgon</p>
-                    <div className='icon-menu'><img src={IconTomorrowPlus1} /></div>
+                    <div className='icon-menu'><img src={IconTomorrowPlus1} alt="" /></div>
                     <p className='temp-menu'> {this.props.TomorrowPlus1TempMax}° /  {this.props.TomorrowPlus1TempMin}°</p>
                 </Link>
 

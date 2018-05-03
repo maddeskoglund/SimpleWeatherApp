@@ -154,11 +154,11 @@ class App extends Component {
         );
         const avTomorrowWind = Math.round(
           tomorrowWind.reduce((total, amount) => total + amount) /
-            tomorrowWind.length
+          tomorrowWind.length
         );
         const avTomorrowPlus1Wind = Math.round(
           tomorrowPlus1Wind.reduce((total, amount) => total + amount) /
-            tomorrowPlus1Wind.length
+          tomorrowPlus1Wind.length
         );
 
         let mf = 1;
@@ -203,34 +203,21 @@ class App extends Component {
           h = 0;
         }
 
+
         const backgroundImages = {
-          spring: "images/springimg.jpg"
+          spring: <img src="images/spring.jpg" alt="" />,
+          winter: <img src="images/winter.png" alt="" />,
+          road: <img src="images/road.png" alt="" />,
+          bridge: <img src="images/bridge.png" alt="" />,
+          lavendel: <img src="images/lavendel.png" alt="" />,
         };
 
-<<<<<<< HEAD
+        var background = tempNow <= 0 ? backgroundImages.winter :
+          tempNow >= 0 || tempNow <= 10 ? backgroundImages.road :
+            tempNow >= 10 || tempNow >= 15 ? backgroundImages.bridge :
+              tempNow >= 15 || tempNow >= 20 ? backgroundImages.spring :
+                tempNow >= 20 ? backgroundImages.lavendel : null;
 
-        /***************************************** */
-
-
-
-        const backgroundImages = {
-          spring: "images/springimg.jpg"
-        }
-
-        // spring: "images/springimg.jpg"
-
-
-
-
-        var background =
-          (tempNow >= 10) ? { spring } : null;
-
-
-        /***************************************** */
-
-=======
-        var background = tempNow >= 10 ? backgroundImages.spring : null;
->>>>>>> b04fe12e36327f1deef8441072771b8eac070ef2
 
 
         this.setState(prevState => {
@@ -269,7 +256,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <img src={this.background} />
+          <div className="background"> {this.state.background}</div>
           <Sidebar
             TodayTempMax={this.state.today.tempMax}
             TodayTempMin={this.state.today.tempMin}
