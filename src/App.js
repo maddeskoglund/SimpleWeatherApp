@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import Day from "./components/Day";
 import FutureDay from "./components/FutureDay";
 import Sidebar from "./components/Menu";
-
 import { BrowserRouter, Route } from "react-router-dom";
-
 import "./App.css";
 
 class App extends Component {
@@ -40,6 +38,10 @@ class App extends Component {
   }
 
   // error????
+
+
+
+
 
   componentDidMount() {
     const long = "16.90267";

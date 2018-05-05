@@ -38,8 +38,10 @@ class FutureDay extends Component {
         return (
             <div>
 
-                <div className="place">Enköping</div>
-                <div className="date">{this.props.datum}</div>
+                <div className="header">
+                    <div className="place">Enköping</div>
+                    <div className="date">{this.props.datum}</div>
+                </div>
                 <div className="weatherinfo">
                     <div className='icon-now'><img src={Icon} alt="" /></div>
                     <div className="temphighlow-futureday">
