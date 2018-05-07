@@ -5,6 +5,48 @@ import Sidebar from "./components/Menu";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
 
+
+
+// const Geolocation = (latitude, longitude) => {
+//   // const latitude = [];
+//   // const longitude = [];
+
+//   var options = {
+//     enableHighAccuracy: true,
+//     timeout: 5000,
+//     maximumAge: 0
+//   };
+
+//   function success(pos) {
+//     var crd = pos.coords;
+
+//     console.log("Your current position is:");
+//     console.log(`Latitude : ${crd.latitude}`);
+//     console.log(`Longitude: ${crd.longitude}`);
+//     console.log(`More or less ${crd.accuracy} meters.`);
+//   }
+
+//   function error(err) {
+//     console.warn(`ERROR(${err.code}): ${err.message}`);
+//   }
+
+//   navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+// }
+
+
+
+
+
+
+
+
+
+
+/******************/
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -34,16 +76,73 @@ class App extends Component {
         rain: [],
         wind: []
       }
+      // geolocation: {
+      //   latitude: [],
+      //   longitude: []
+      // }
     };
   }
 
   // error????
 
+  /**************** Geolocation*************/
 
 
 
+
+  // const Geolocation = (latitude, longitude) => {
+  //   // const latitude = [];
+  //   // const longitude = [];
+
+  //   var options = {
+  //     enableHighAccuracy: true,
+  //     timeout: 5000,
+  //     maximumAge: 0
+  //   };
+
+  //   function success(pos) {
+  //     var crd = pos.coords;
+
+  //     console.log("Your current position is:");
+  //     console.log(`Latitude : ${crd.latitude}`);
+  //     console.log(`Longitude: ${crd.longitude}`);
+  //     console.log(`More or less ${crd.accuracy} meters.`);
+  //   }
+
+  //   function error(err) {
+  //     console.warn(`ERROR(${err.code}): ${err.message}`);
+  //   }
+
+  //   navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+  // }
+
+
+
+
+
+
+
+  /************************************** */
 
   componentDidMount() {
+
+    // this.watchId = navigator.geolocation.watchPosition(
+    //   (position) => {
+    //     this.setState({
+    //       latitude: position.coords.latitude,
+    //       longitude: position.coords.longitude,
+    //       error: null,
+    //     });
+    //   },
+    //   (error) => this.setState({ error: error.message }),
+    //   { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
+    // );
+
+    // console.log(latitude)
+
+
     const long = "16.90267";
     const lat = "59.65584";
     let tempNow = -Infinity;
@@ -214,11 +313,13 @@ class App extends Component {
           lavendel: <img src="images/lavendel.png" alt="" />,
         };
 
-        var background = tempNow <= 0 ? backgroundImages.winter :
-          tempNow >= 0 || tempNow <= 10 ? backgroundImages.road :
-            tempNow >= 10 || tempNow >= 15 ? backgroundImages.bridge :
-              tempNow >= 15 || tempNow >= 20 ? backgroundImages.spring :
-                tempNow >= 20 ? backgroundImages.lavendel : null;
+        var background =
+          (tempNow <= 0) ? backgroundImages.winter :
+            (tempNow >= 0 || tempNow <= 10) ? backgroundImages.road :
+              (tempNow >= 10 || tempNow <= 15) ? backgroundImages.bridge :
+                (tempNow >= 15 || tempNow <= 20) ? backgroundImages.spring :
+                  (tempNow >= 20) ? backgroundImages.lavendel : null;
+
 
 
 
