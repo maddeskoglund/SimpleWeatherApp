@@ -46,6 +46,7 @@ class Day extends Component {
                 <div className="header">
                     <div className="place">Enköping</div>
                     <div className="date">{this.props.datum}</div>
+                    <div>Latitud: {this.props.myLatitude}</div><div>Longitud: {this.props.myLongitude}</div>
                 </div>
                 <div className="weatherinfo">
                     <div className='icon-now'><img src={IconNow} alt="" /></div>

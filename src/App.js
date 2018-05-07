@@ -51,6 +51,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      latitude: "Hämtar latitud…",
+      longitude: "Hämtar longitud…",
       today: {
         city: [],
         icon: [],
@@ -83,50 +85,47 @@ class App extends Component {
     };
   }
 
-  // error????
+getLongitudeAndLatitude(){
+var options = {
+  enableHighAccuracy: false,
+  timeout: 5000,
+  maximumAge: 0
+};
+let self = this;
+function success(pos) {
+  var crd = pos.coords;
 
+console.log(self);
+  let latitude = crd.latitude.toFixed(5)
+  let longitude = crd.longitude.toFixed(5)
+  console.log(latitude);
+  console.log(longitude);
+  self.setState(prevState => {
+    prevState.latitude=latitude;
+    prevState.longitude=longitude;
+  return prevState;
+  });
+
+  // console.log("Your current position is:");
+  // console.log(`Latitude : ${crd.latitude}`);
+  // console.log(`Longitude: ${crd.longitude}`);
+  // console.log(`More or less ${crd.accuracy} meters.`);
+  // console.log(latitude, longitude)
+  return {long: longitude, lat: latitude};
+  }
+
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+let myPosition = navigator.geolocation.getCurrentPosition(success, error, options);
+}
 
   componentDidMount() {
 
 
     //Geolocation
-
-    const latitude = [];
-    const longitude = [];
-
-    var options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
-    function success(pos) {
-      var crd = pos.coords;
-
-
-      const latitude = crd.latitude.toFixed(5)
-      const longitude = crd.longitude.toFixed(5)
-
-      // console.log("Your current position is:");
-      // console.log(`Latitude : ${crd.latitude}`);
-      // console.log(`Longitude: ${crd.longitude}`);
-      // console.log(`More or less ${crd.accuracy} meters.`);
-      // console.log(latitude, longitude)
-      return {
-        lat: latitude,
-        long: longitude
-      };
-
-    }
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-    navigator.geolocation.getCurrentPosition(success, error, options);
-
-
-    console.log(latitude, longitude)
-
-
-
+this.getLongitudeAndLatitude();
 
 
     const long = "16.90267";
@@ -314,8 +313,6 @@ class App extends Component {
 
 
         this.setState(prevState => {
-          // prevState.longitude = longitude;
-          // prevState.latitude = latitude;
           prevState.background = background;
           prevState.today.iconNow = iconNow;
           prevState.today.icon = mostCommonIconToday;
@@ -370,6 +367,8 @@ class App extends Component {
             render={props => (
               <Day
                 //Idag
+                myLongitude = {this.state.longitude}
+                myLatitude = {this.state.latitude}
                 IconNow={this.state.today.iconNow}
                 datum={this.state.todayDate}
                 TempNow={this.state.today.tempNow}
