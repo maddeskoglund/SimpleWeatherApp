@@ -89,6 +89,7 @@ class App extends Component {
   componentDidMount() {
 
 
+    //Geolocation
 
     const latitude = [];
     const longitude = [];
@@ -101,6 +102,7 @@ class App extends Component {
     function success(pos) {
       var crd = pos.coords;
 
+
       const latitude = crd.latitude.toFixed(5)
       const longitude = crd.longitude.toFixed(5)
 
@@ -109,13 +111,19 @@ class App extends Component {
       // console.log(`Longitude: ${crd.longitude}`);
       // console.log(`More or less ${crd.accuracy} meters.`);
       // console.log(latitude, longitude)
+      return {
+        lat: latitude,
+        long: longitude
+      };
+
     }
     function error(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     }
     navigator.geolocation.getCurrentPosition(success, error, options);
 
-    // console.log(latitude, longitude)
+
+    console.log(latitude, longitude)
 
 
 
@@ -306,8 +314,8 @@ class App extends Component {
 
 
         this.setState(prevState => {
-          prevState.longitude = longitude;
-          prevState.latitude = latitude;
+          // prevState.longitude = longitude;
+          // prevState.latitude = latitude;
           prevState.background = background;
           prevState.today.iconNow = iconNow;
           prevState.today.icon = mostCommonIconToday;
